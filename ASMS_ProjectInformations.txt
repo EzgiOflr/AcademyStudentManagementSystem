@@ -1,0 +1,7 @@
+Eklenen paketler:
+
+1- Microsoft.EntityFramework.Core  ver: 5.0.14
+2- Microsoft.EntityFramework.Core.SqlServer ver: 5.0.14
+3- Microsoft.EntityFramework.Core.Design ver: 5.0.14
+4- Microsoft.EntityFramework.Core.Tools ver: 5.0.14
+5- Microsoft.AspNetCore.Identity.EntityFramework ver : 5.0.14
