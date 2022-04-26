@@ -16,5 +16,15 @@ namespace ASMSEntityLayer.Enums
         Unknown= 2 
     }
 
+    public enum ClassLocation : byte
+    {
+        GirisKat=0,
+        kat1=1,
+        kat2=2,
+        kat3=3,
+        kat4=4,
+        kat5=5
+    }
+
 
 }

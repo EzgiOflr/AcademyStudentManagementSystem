@@ -5,3 +5,4 @@ Eklenen paketler:
 3- Microsoft.EntityFramework.Core.Design ver: 5.0.14
 4- Microsoft.EntityFramework.Core.Tools ver: 5.0.14
 5- Microsoft.AspNetCore.Identity.EntityFramework ver : 5.0.14
+--app user bitti
