@@ -14,6 +14,9 @@ namespace ASMSEntityLayer.Models
         public int ClassId { get; set; }
         //öğretmen id gelecek
         public int CourseId { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime StartDate { get; set; }
+        [DataType(DataType.Date)]
         public DateTime FinishDate { get; set; }
         public int Capasite { get; set; }
 
