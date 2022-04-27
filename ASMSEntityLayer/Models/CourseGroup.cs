@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ASMSEntityLayer.Models
 {
+    // [Index(nameof(PortalCode),IsUnique=true)] Context classında OnModelCreating metodu ezerek yazacağız.
     [Table("CoursesGroup")]
     public class CourseGroup : Base<int>
     {
@@ -24,7 +26,7 @@ namespace ASMSEntityLayer.Models
         [Required]
         [StringLength(7, MinimumLength = 7, ErrorMessage = "Kurs portal numarası 7 haneli olmalıdır!!")]
 
-        //TODO isunique eklensin
+        
         public string PortalCode { get; set; }
 
         //ilişki
