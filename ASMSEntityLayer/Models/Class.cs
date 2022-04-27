@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ASMSEntityLayer.Models
 {
     [Table("Classes")]
-    public class Classes :Base<int>
+    public class Class :Base<int>
     {
         [Required]
         [StringLength(50,MinimumLength =2,ErrorMessage ="Sınıf adı en az 2 en çok 50 karakter aralığında olmalıdır!!")]
@@ -18,6 +18,9 @@ namespace ASMSEntityLayer.Models
         public string ClassName { get; set; }
 
         public ClassLocation ClassFloor { get; set; } //kat 1 gibi
+        //ilişkinin Karşılığı 
+
+        public virtual ICollection<CourseGroup> CourseGroups { get; set; }
 
     }
 }

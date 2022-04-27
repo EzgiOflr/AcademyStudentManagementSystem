@@ -23,7 +23,7 @@ namespace ASMSEntityLayer.IdentityModels
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Soyisminiz en az 2, en fazla 50 karakter olmalıdır!")]
 
         public string Surname { get; set; }
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "TC 11 haneli olmalıdır!")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "TC kimlik numarası 11 haneli olmalıdır!")]
 
         public string TcNumber { get; set; }
 
@@ -41,6 +41,8 @@ namespace ASMSEntityLayer.IdentityModels
         //ilişkiler 
         public virtual ICollection<UsersAddress> UsersAddresses { get; set; }
 
+        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Student>  Students { get; set; }
 
 
     }
