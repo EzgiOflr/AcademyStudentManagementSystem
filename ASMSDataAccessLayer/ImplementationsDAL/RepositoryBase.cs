@@ -79,7 +79,7 @@ namespace ASMSDataAccessLayer.ImplementationsDAL
                 throw;
             }
         }
-
+        
         public T GetById(Id id)
         {
             try
