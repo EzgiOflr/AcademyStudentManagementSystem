@@ -6,3 +6,6 @@ Eklenen paketler:
 4- Microsoft.EntityFramework.Core.Tools ver: 5.0.14
 5- Microsoft.AspNetCore.Identity.EntityFramework ver : 5.0.14
 --app user bitti
+-----------
+6-AutoMapper 9.0.0 indirildi
+7- AutoMapper.Extension.Microsoft.DependencyInjection 7.0.0 indirildi.

@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using ASMSEntityLayer.Mappings;
 
 namespace ASMSPresentationLayer
 {
@@ -50,7 +52,8 @@ namespace ASMSPresentationLayer
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@";
              }).AddDefaultTokenProviders().AddEntityFrameworkStores<MyContext>();
 
-
+            //Mapleme eklendi
+            services.AddAutoMapper(typeof(Maps));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
