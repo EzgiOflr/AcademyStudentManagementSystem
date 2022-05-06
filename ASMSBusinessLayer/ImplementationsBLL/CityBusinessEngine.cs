@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace ASMSBusinessLayer.ImplementationsBLL
 {
-    class CityBusinessEngine:ICityBusinessEngine
+    public class CityBusinessEngine : ICityBusinessEngine
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public CityBusinessEngine(IUnitOfWork unitOfWork,IMapper mapper)
+        public CityBusinessEngine(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -28,11 +28,11 @@ namespace ASMSBusinessLayer.ImplementationsBLL
             try
             {
                 City newCity = _mapper.Map<CityVM, City>(city);
-                var insertResult= _unitOfWork.CityRepo.Add(newCity);
+                var insertResult = _unitOfWork.CityRepo.Add(newCity);
                 return insertResult ?
                     new SuccessResult("İl eklendi.") :
                     new ErrorResult("İl eklemede bir hata oluştu! Tekrar deneyiniz.");
-                
+
             }
             catch (Exception)
             {

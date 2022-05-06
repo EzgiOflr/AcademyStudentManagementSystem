@@ -25,6 +25,15 @@ namespace ASMSEntityLayer.Enums
         kat4=4,
         kat5=5
     }
+    public enum ASMSRoles : byte
+    {
+        Passive=0,
+        Student=1,
+        Teacher=2,
+        Coordinator=3,
+        StudentAdministration=4,
+        Manager=5
 
+    }
 
 }
