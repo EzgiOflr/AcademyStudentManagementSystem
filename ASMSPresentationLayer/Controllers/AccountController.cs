@@ -240,5 +240,69 @@ namespace ASMSPresentationLayer.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult ConfirmResetPassword(string userId,string code)
+        {
+            if(string.IsNullOrEmpty(userId)|| string.IsNullOrEmpty(code))
+            {
+                ViewBag.ConfirmResetPasswordFailureMessage = "Beklenmedik bir hata oluştu.";
+
+                return View();
+            }
+
+            ResetPasswordViewModel model = new ResetPasswordViewModel()
+            {
+                UserId = userId,
+                Code = code
+            };
+        
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmResetPassword(ResetPasswordViewModel model)
+        {
+            try
+            {
+
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user==null)
+                {
+                    ModelState.AddModelError("", "Kullanıcı Bulunamadı!");
+
+                    ////log mesajı yerleştir. hangisinde 286 da mı hata var yoksa 275 de mi? 
+                    ///ikisi de exceptionda aynı hatayı verir cünkü
+                    ////hangiis hatalı anlayalım diye log yerlestiriyoruz.
+                    //throw new Exception(); //catche zıplattık.
+                }
+                var tokenDecoded = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Code));
+                var result = await _userManager.ResetPasswordAsync(user, tokenDecoded, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    TempData["ConfirmResetPasswordSuccess"] = "Şifrenizi başarıyla güncellenmiştir!";
+                    return RedirectToAction("Login", "Account", new { email = user.Email });
+
+
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Şifrenizin değişme işleminde beklenmedik bir hata oluştu. Tekrar Deneyiniz.");
+                    return View(model);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                //ex loglanacak
+                ModelState.AddModelError("", "Beklenmedik bir hata oluştu, Tekrar deneyiniz!");
+                return View(model);
+            }
+        }
     }
 }
