@@ -7,7 +7,7 @@ using ASMSDataAccessLayer.ContractsDAL;
 
 namespace ASMSDataAccessLayer.ImplementationsDAL
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
 
         private readonly MyContext _myContext;

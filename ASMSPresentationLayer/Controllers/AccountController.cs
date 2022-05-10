@@ -22,7 +22,7 @@ namespace ASMSPresentationLayer.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        private readonly RoleManager<AppUser> _roleManager;
+        private readonly RoleManager<AppRole> _roleManager;
         private readonly IEmailSender _emailSender;
         private readonly IStudentBusinessEngine _studentBusinessEngine;
 
@@ -30,7 +30,7 @@ namespace ASMSPresentationLayer.Controllers
         //hepsinin ctor'unu olusturdum.
         public AccountController(UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
-            RoleManager<AppUser> roleManager,
+            RoleManager<AppRole> roleManager,
             IEmailSender emailSender, IStudentBusinessEngine studentBusinessEngine)
         {
             _userManager = userManager;
