@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ASMSEntityLayer.Mappings;
 using ASMSBusinessLayer.EmailService;
+using ASMSBusinessLayer.ContractsBLL;
+using ASMSBusinessLayer.ImplementationsBLL;
 
 namespace ASMSPresentationLayer
 {
@@ -32,7 +34,13 @@ namespace ASMSPresentationLayer
             //Aspnet Core'un ConnectionString baðlantýsý yapabilmesi için 
             //yapýlandýrma servislerine dbContext nesnesini eklemesi gerekir.
             services.AddDbContext<MyContext>(options => options.UseSqlServer
-            (Configuration.GetConnectionString("SqlConnection")));
+            (Configuration.GetConnectionString("SqlConnection")
+            ),ServiceLifetime.Scoped); 
+            //lifetime larý farklý oldugu icin database ve unitof workun ayný hala getirdik yoksa hata veriyordu.
+            //servicelifetime.scoped
+            //context scoped oldu unit of work de scoped ona baðlý  business engine'in da unitof worke baglý bu yüzden üçü de 
+            //scoped yaptýk.
+            //yaþam þekilleri ayný deðilse hata verir. karsýlastýgýmýz gibi. second operation mistake.
 
             services.AddControllersWithViews();
             services.AddRazorPages();//sayfalama için
@@ -56,11 +64,14 @@ namespace ASMSPresentationLayer
             //Mapleme eklendi
             services.AddAutoMapper(typeof(Maps));
 
-            services.AddScoped<IEmailSender, EmailSender>();
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddScoped<IStudentBusinessEngine, StudentBusinessEngine>();
+            services.AddScoped<ASMSDataAccessLayer.ContractsDAL.IUnitOfWork, ASMSDataAccessLayer.ImplementationsDAL.UnitOfWork>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env , RoleManager<AppRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -81,7 +92,9 @@ namespace ASMSPresentationLayer
 
             app.UseAuthentication(); // login logout iþlemlerinin gerektirtiði oturum iþleyiþlerini kullanabilmek icin
                                      // (kimlik dogrulamasý)
-            //MVC ile ayný kod bloðu endpoint'in mekanizmasýnýn nasýl olacaðý belirleniyor.
+                                     //MVC ile ayný kod bloðu endpoint'in mekanizmasýnýn nasýl olacaðý belirleniyor.
+                                     //rolleri olusturacak static metot caðýrýldý.
+            CreateDefaultData.CreateData.Create(roleManager);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
