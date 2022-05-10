@@ -30,10 +30,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         }
 
     </script>
-    
+
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
-    <link rel="stylesheet"href="~/asmsTheme/css/bootstrap.css">
+    <link rel="stylesheet" href="~/asmsTheme/css/bootstrap.css">
     <!-- Bootstrap-Core-CSS -->
     <link href="~/asmsTheme/css/simpleLightbox.css" rel='stylesheet' type='text/css' />
     <link href="~/asmsTheme/css/roadmap.css" rel="stylesheet" type="text/css" />
@@ -54,54 +54,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
     <!-- mian-content -->
     <header class="index-banner" id="home">
-        <!-- nav -->
-        <nav class="main-header d-flex">
-            <div id="brand">
-                <div id="logo">
-                    <a href="index.html">
-                        <i class="fas fa-crosshairs"></i>
-                    </a>
-                </div>
-                <div id="word-mark">
-                    <h1>
-                        <a href="index.html">Recognize</a>
-                    </h1>
-                </div>
-            </div>
-            <div id="menu">
-                <div id="menu-toggle">
-                    <div id="menu-icon">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </div>
-                </div>
-                <ul class="text-center nav-honey">
-                    <li>
-                        <a href="index.html" class="active ">Home</a>
-                    </li>
-                    <li>
-                        <a class="scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="scroll" href="#projects">Projects</a>
-                    </li>
-                    <li>
-                        <a class="scroll" href="#contact">Contact</a>
-                    </li>
-                    <li class="login">
-                        <button type="button" class="btn login-btn text-uppercase " data-toggle="modal" data-target="#exampleModalCenter">
-                            Login
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-        </nav>
-        <!-- //nav -->
+      <partial name="Partials/_HeaderPartial" />
         <!-- banner -->
         <div class="banner_section">
             <div class="snow-container">
@@ -128,109 +81,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- banner-bottom-wthree -->
     <section class="banner-bottom-wthree py-lg-5 py-md-5 py-4" id="about">
         <div class="container">
-           @RenderBody()
+            @RenderBody()
 
         </div>
     </section>
     <!--// ab -->
     <!--/footer-->
-    <footer class="footer text-left">
-        <div class="container py-4 py-sm-5">
 
-            <div class="row py-sm-4 py-3">
-                <div class="col-lg-2 col-md-4">
-                    <ul class="list-footer" data-aos="fade-up">
-                        <li>
-                            <a href="#home" class="nav-link scroll">
-                                Home
-                            </a>
-                        </li>
-                        <li class="my-2">
-                            <a href="#about" class="nav-link scroll">
-                                About
-                            </a>
-                        </li>
-                        <li class="my-2">
-                            <a href="#services" class="nav-link scroll">
-                                Services
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#projects" class="nav-link scroll">
-                                Projects
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contact" class="nav-link scroll">
-                                Contact Us
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mt-sm-5">
-                    <ul class="list-footer" data-aos="fade-up">
-                        <li>
-                            <a href="#register" data-toggle="modal" data-target="#exampleModalCenter" class="nav-link scroll">
-                                Login
-                            </a>
-                        </li>
-                        <li class="my-2">
-                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter2" class="nav-link">
-                                Register
-                            </a>
-                        </li>
-                        <li class="my-2">
-                            <a href="#" class="nav-link">
-                                License
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="offset-lg-4"></div>
-                <div class="col-lg-4 footer-end-grid mt-md-0 mt-sm-5" data-aos="fade-up">
-                    <h2>
-                        <a href="index.html">
-                            <i class="fas fa-crosshairs"></i> Recognize
-                        </a>
-                    </h2>
-                </div>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between pt-lg-3  footer-bottom-cpy">
-                <div class="copy-right-w3ls">
-                    <p>
-                        © 2018 Recognize. All rights reserved | Design by
-                        <a href="http://w3layouts.com/"> W3layouts </a>
+    <partial name="Partials/_FooterPartial"/>
 
-                    </p>
-                </div>
-                <div class="social-content pb-md-0 pb-4">
-                    <ul class="social-icons text-center d-flex">
-                        <li class="ml-lg-5">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-google-plus-g"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
     <!--//footer-->
     <!--model-forms-->
     <!--/Login-->
@@ -373,58 +232,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="~/asmsTheme/js/jquery.roadmap.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var events = [{
-                    date: 'Oct 2018 - Present',
-                    content: 'Company Name <small>Co-founder, Front-end Designer</small>'
-                },
-                {
-                    date: '2016 - 2018',
-                    content: 'Company Name <small>Senior Visual Designer</small>'
-                },
-                {
-                    date: '2013 - 2016',
-                    content: 'Company Name <small>Mid-level Designer</small>'
-                },
-                {
-                    date: '2012 - 2013',
-                    content: 'Company Name <small>Mid-level Designer</small>'
-                },
-                {
-                    date: '2012 - 2013',
-                    content: 'Company Name <small>Freelance</small>'
-                },
-                {
-                    date: '2011 - 2012',
-                    content: 'San Diego university  <small>For Design</small>'
-                },
-                {
-                    date: '2010 - 2011',
-                    content: 'New York university  <small>For Graphic Design</small>'
-                },
+                date: 'Oct 2018 - Present',
+                content: 'Company Name <small>Co-founder, Front-end Designer</small>'
+            },
+            {
+                date: '2016 - 2018',
+                content: 'Company Name <small>Senior Visual Designer</small>'
+            },
+            {
+                date: '2013 - 2016',
+                content: 'Company Name <small>Mid-level Designer</small>'
+            },
+            {
+                date: '2012 - 2013',
+                content: 'Company Name <small>Mid-level Designer</small>'
+            },
+            {
+                date: '2012 - 2013',
+                content: 'Company Name <small>Freelance</small>'
+            },
+            {
+                date: '2011 - 2012',
+                content: 'San Diego university  <small>For Design</small>'
+            },
+            {
+                date: '2010 - 2011',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
 
-                {
-                    date: '2009 - 2010',
-                    content: 'New York university  <small>For Graphic Design</small>'
-                },
+            {
+                date: '2009 - 2010',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
 
-                {
-                    date: '2008 - 2009',
-                    content: 'New York university  <small>For Graphic Design</small>'
-                },
-                {
-                    date: '2005 - 2008',
-                    content: 'Lorem Ipsum  <small>Add Description</small>'
-                },
-                {
-                    date: '2003 - 2005',
-                    content: 'Lorem IPsum  <small>Add Description</small>'
-                },
-                {
-                    date: '2001 - 2003',
-                    content: 'Lorem IPsum  <small>Add Description</small>'
-                }
+            {
+                date: '2008 - 2009',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
+            {
+                date: '2005 - 2008',
+                content: 'Lorem Ipsum  <small>Add Description</small>'
+            },
+            {
+                date: '2003 - 2005',
+                content: 'Lorem IPsum  <small>Add Description</small>'
+            },
+            {
+                date: '2001 - 2003',
+                content: 'Lorem IPsum  <small>Add Description</small>'
+            }
             ];
 
             $('#my-timeline').roadmap(events, {
@@ -455,8 +314,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="~/asmsTheme/js/move-top.js"></script>
     <script src="~/asmsTheme/js/easing.js"></script>
     <script>
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event) {
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
                 event.preventDefault();
                 $('html,body').animate({
                     scrollTop: $(this.hash).offset().top
@@ -466,15 +325,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             /*
-            						var defaults = {
-            							  containerID: 'toTop', // fading element id
-            							containerHoverID: 'toTopHover', // fading element hover id
-            							scrollSpeed: 1200,
-            							easingType: 'linear'
-            						 };
-            						*/
+                                    var defaults = {
+                                          containerID: 'toTop', // fading element id
+                                        containerHoverID: 'toTopHover', // fading element hover id
+                                        scrollSpeed: 1200,
+                                        easingType: 'linear'
+                                     };
+                                    */
 
             $().UItoTop({
                 easingType: 'easeOutQuart'
