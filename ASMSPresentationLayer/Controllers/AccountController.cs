@@ -40,12 +40,12 @@ namespace ASMSPresentationLayer.Controllers
             _studentBusinessEngine = studentBusinessEngine;
 
         }
-
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
+        //get'i yorum yaptık cunku register sayfam yok popup uzerinden calısıyorum.
+        //[HttpGet]
+        //public IActionResult Register()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -54,14 +54,19 @@ namespace ASMSPresentationLayer.Controllers
             {
                 if(!ModelState.IsValid)
                 {
-                    return View(model);
+                    TempData["RegisterFailedMessage"] = "Veri girişlerini istenildiği gibi yapmadınız! Tekrar deneyiniz!";
+                    return RedirectToAction("Index", "Home");
+
+                    //return View(model);
                 }
                 //Aynı emailden tekrar kayıt olunmasın 
                 var checkUserForEmail = await _userManager.FindByEmailAsync(model.Email);
                 if(checkUserForEmail!= null)
                 {
-                    ModelState.AddModelError("", "Bu Email ile zaten sisteme kayıt yapılmıştır!");
-                    return View(model);
+                    TempData["RegisterFailedMessage"] = "Bu Email ile zaten sisteme kayıt yapılmıştır!";
+                    return RedirectToAction("Index", "Home");
+                    //ModelState.AddModelError("", "Bu Email ile zaten sisteme kayıt yapılmıştır!");
+                    //return View(model);
                 }
                 //user'ı oluşturalım 
                 AppUser newUser = new AppUser()
@@ -74,7 +79,8 @@ namespace ASMSPresentationLayer.Controllers
                     BirthDate = model.BirthDate.HasValue ? model.BirthDate.Value : null,
                     Gender = model.Gender,
                     EmailConfirmed = true,
-                    UserName = model.Email
+                    UserName = model.Email,
+                    TcNumber=model.TCNumber
                 };
 
                 var result = await _userManager.CreateAsync(newUser, model.Password);
@@ -95,28 +101,29 @@ namespace ASMSPresentationLayer.Controllers
                     if (resultStudent.IsSuccess == false)
                     {
                         //Admime gizliden bir email gönder (öğrenciyi) eklesin
-
-
-                    }
-                    
+                    }                   
                     //email gönderilsin
-
                     var emailToStudent = new EmailMessage()
                     {
                         Subject = "ASMS Sistemine HOŞ GELDİNİZ!" + newUser.Name + " " + newUser.Surname,
                         Body = "Merhaba sisteme kaydınız gerçekleşmiştir...",
                         Contacts = new string[] { model.Email }
                     };
-                    return RedirectToAction("Login", "Account", new { email = model.Email });
+                    await _emailSender.SendMessage(emailToStudent);
+
+                    TempData["RegisterSuccessMessage"] = "Sisteme kaydınız başarıyla gerçekleşti!";
+                    return RedirectToAction("Index", "Home", new { email = model.Email });
                 }
 
                 else
                 {
-                    ModelState.AddModelError("", "Beklenmedik bir sorun oldu.Üye kaydı başarısız. Tekrar deneyiniz!");
-                    return View(model);
+                    TempData["RegisterFailedMessage"] = "Beklenmedik bir sorun oldu.Üye kaydı başarısız.Tekrar deneyiniz!";
+                    return RedirectToAction("Index", "Home");
+                    //ModelState.AddModelError("", "Beklenmedik bir sorun oldu.Üye kaydı başarısız. Tekrar deneyiniz!");
+                    //return View(model);
                 }
             }
-            catch (Exception)
+            catch (Exception ex )
             {
 
                 //loglanacak;
