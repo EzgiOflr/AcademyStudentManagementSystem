@@ -1,4 +1,7 @@
-﻿@*Footer started*@
+﻿@inject SignInManager<AppUser> signManager
+
+@*Footer started*@
+
 
 <footer class="footer text-left">
     <div class="container py-4 py-sm-5">
@@ -34,19 +37,22 @@
                 </ul>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 mt-sm-5">
-                <ul class="list-footer" data-aos="fade-up">
-                    <li>
-                        <a href="#register" data-toggle="modal" data-target="#exampleModalCenter" class="nav-link scroll">
-                            Giriş Yap
-                        </a>
-                    </li>
-                    <li class="my-2">
-                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter2" class="nav-link">
-                            Kayıt ol
-                        </a>
-                    </li>
-                   
-                </ul>
+                @if (!signManager.IsSignedIn(Context.User))
+                {
+                    <ul class="list-footer" data-aos="fade-up">
+                        <li>
+                            <a href="#register" data-toggle="modal" data-target="#exampleModalCenter" class="nav-link scroll">
+                                Giriş Yap
+                            </a>
+                        </li>
+                        <li class="my-2">
+                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter2" class="nav-link">
+                                Kayıt ol
+                            </a>
+                        </li>
+
+                    </ul>
+                }
             </div>
             <div class="offset-lg-4"></div>
             <div class="col-lg-4 footer-end-grid mt-md-0 mt-sm-5" data-aos="fade-up">
@@ -61,7 +67,7 @@
         <div class="d-flex justify-content-between pt-lg-3  footer-bottom-cpy">
             <div class="copy-right-w3ls">
                 <p>
-                    © 2022 . Tüm hakları Network Akademi 303 Sabah Grubu sınıfına saklıdır.
+                    © 2022 . Tüm Hakları Network Akademi 303 Sabah Grubuna Saklıdır.
 
                     <a href="/Home/Index"> ASMS 303 </a>
 
