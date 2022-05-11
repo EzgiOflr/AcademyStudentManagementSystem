@@ -34,8 +34,7 @@ namespace ASMSPresentationLayer
             //Aspnet Core'un ConnectionString baðlantýsý yapabilmesi için 
             //yapýlandýrma servislerine dbContext nesnesini eklemesi gerekir.
             services.AddDbContext<MyContext>(options => options.UseSqlServer
-            (Configuration.GetConnectionString("SqlConnection")
-            ),ServiceLifetime.Scoped); 
+            (Configuration.GetConnectionString("SqlConnection"))); 
             //lifetime larý farklý oldugu icin database ve unitof workun ayný hala getirdik yoksa hata veriyordu.
             //servicelifetime.scoped
             //context scoped oldu unit of work de scoped ona baðlý  business engine'in da unitof worke baglý bu yüzden üçü de 
@@ -87,13 +86,12 @@ namespace ASMSPresentationLayer
 
             app.UseSession();//oturum mekanizmasýnýn kullanýlabilmesi için.
             app.UseRouting(); // controller/action/ýd kýsmý
-
-            app.UseAuthorization();//[authorize] attributesi için (yetki için)
-
             app.UseAuthentication(); // login logout iþlemlerinin gerektirtiði oturum iþleyiþlerini kullanabilmek icin
                                      // (kimlik dogrulamasý)
                                      //MVC ile ayný kod bloðu endpoint'in mekanizmasýnýn nasýl olacaðý belirleniyor.
                                      //rolleri olusturacak static metot caðýrýldý.
+            app.UseAuthorization();//[authorize] attributesi için (yetki için)
+
             CreateDefaultData.CreateData.Create(roleManager);
             app.UseEndpoints(endpoints =>
             {
