@@ -32,10 +32,12 @@ namespace ASMSPresentationLayer.CreateDefaultData
                         CreatedDate = DateTime.Now,
                         Description = $"Sistem tarafından {item} rolü eklendi"
                     };
-                    roleManager.CreateAsync(role);
+                    var result = roleManager.CreateAsync(role).Result;
+                    //eklerken bunu değiştirme sebebim: asenkron olduugu icin asenkron paralel gitmeye calısırken
+                    //cakıstıgı için sıkıntı cıkyor roller eklenmiyordu. resultu eklediğimiz de senkron oluyor ve sırayla ekleyip 
+                   //roller sirayla ekleniyor.
                 }
             }
-           
         }
     }
 }
