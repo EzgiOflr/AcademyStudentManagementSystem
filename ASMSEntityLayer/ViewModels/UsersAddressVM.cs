@@ -19,12 +19,15 @@ namespace ASMSEntityLayer.ViewModels
         [Required]
         [StringLength(50, MinimumLength = 2,
         ErrorMessage = "Adres başlığı en az 2 , en fazla 50 karakter aralığında olmalıdır!")]
+        [Display(Name = "Adres Başlığı")]
         public string AddressTitle { get; set; }
         [Required(ErrorMessage ="Mahalle seçimi gereklidir!")]
         public int NeighbourhoodId { get; set; }
         [StringLength(500, ErrorMessage = "Adres detayı en fazla 500 karakter aralığında olabilir!")]
+        [Display(Name ="Adres Detayı")]
         public string AddressDetails { get; set; }
         [StringLength(5, MinimumLength = 5, ErrorMessage = "Posta kodu 5 karakter olmalıdır!!")]
+        [Display(Name = "Posta Kodu")]
         public string PostCode { get; set; }
         public virtual AppUser AppUser { get; set; }
         public NeighbourhoodVM Neighbourhood { get; set; }//include entities
