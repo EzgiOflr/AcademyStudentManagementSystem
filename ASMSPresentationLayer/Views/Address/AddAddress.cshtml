@@ -2,7 +2,7 @@
 @model UsersAddressVM
 @{
     ViewData["Title"] = "AddAddress";
-    Layout = "~/Views/Shared/_LayoutASMS.cshtml";
+    Layout = "~/Views/Shared/_LayoutASMSPages.cshtml";
 }
 <br />
 <br />
@@ -23,9 +23,13 @@
                 <span class="text-danger" style="font-weight:bold;
                     margin-right:3px;">*</span>
                 <label for="City" style="font-weight: bold">İl</label>
-                <select id="CitySelect" name="City" class="form-control" required>
+                <select id="CitySelect" name="City" class="form-control" style="padding:3px" required>
                     <option value="0" selected>***İl Seçiniz***</option>
+                    @foreach (var item in ViewBag.Cities)
+            {
+                        <option value="@item.Id">@item.CityName</option>
 
+            }
                 </select>
 
             </div>
@@ -67,11 +71,36 @@
 
 
     </div>
-
-
-
 </div>
+@section Scripts{ 
+    <script>
+        $(document).ready(function (){
+            //sayfa ilk açıldıgında bazı kombolar pasif olacak.
 
+
+
+        });
+        $('#CitySelect').on('change', function () {
+            //ilçeyi temizle
+            var $district = $("#DistrictSelect");
+            $district.empty();
+            $district.append("Optio value= '0' selected>***İlçe Seçiniz***</option>");
+
+            //mahalle temizlee
+            var $neighbourhood = $("#NeighbourhoodSelect");
+            $neighbourhood.empty();
+            $neighbourhood.append("Optio value= '0' selected>***Mahalle Seçiniz***</option>");
+
+            var cityId = this.value;
+            //eğer seçilen ilin Id si 0 dan büyük ise ajax ile ilçeleri getir.
+            if (cityId > 0) {
+
+            }
+
+
+        });
+    </script>
+}
 
 
 

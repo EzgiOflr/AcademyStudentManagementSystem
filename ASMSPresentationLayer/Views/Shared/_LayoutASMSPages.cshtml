@@ -58,7 +58,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- mian-content -->
     <header class="index-banner" id="home">
         <partial name="Partials/_HeaderPartial" />
-      
+
+        <!--Banner-->
+        <div class="banner_section_pages">
+
+        </div>
+
+        <!--Banner-->
     </header>
     <!-- //header -->
     <!--// banner-slider -->
@@ -252,6 +258,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //js -->
 
     <script src="~/asmsTheme/js/bootstrap.js"></script>
+    @RenderSection("Scripts", required: false)
+    <!--@await RenderSectionAsync("Scripts", required: false)  ASENKRON HALİ-->
 
 </body>
 

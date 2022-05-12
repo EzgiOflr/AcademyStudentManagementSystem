@@ -34,14 +34,16 @@ namespace ASMSPresentationLayer
             //Aspnet Core'un ConnectionString baðlantýsý yapabilmesi için 
             //yapýlandýrma servislerine dbContext nesnesini eklemesi gerekir.
             services.AddDbContext<MyContext>(options => options.UseSqlServer
-            (Configuration.GetConnectionString("SqlConnection"))); 
+            (Configuration.GetConnectionString("SqlConnection")));
             //lifetime larý farklý oldugu icin database ve unitof workun ayný hala getirdik yoksa hata veriyordu.
             //servicelifetime.scoped
             //context scoped oldu unit of work de scoped ona baðlý  business engine'in da unitof worke baglý bu yüzden üçü de 
             //scoped yaptýk.
             //yaþam þekilleri ayný deðilse hata verir. karsýlastýgýmýz gibi. second operation mistake.
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+          .AddRazorRuntimeCompilation();//proje çalýþýrken razor sayfalarýnda yapýlan deðiþiklikler anýnda sayfaya yansýmasý için eklendi.                             
+             
             services.AddRazorPages();//sayfalama için
             services.AddMvc();
             services.AddSession(options
@@ -66,7 +68,9 @@ namespace ASMSPresentationLayer
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IStudentBusinessEngine, StudentBusinessEngine>();
             services.AddScoped<IUsersAddressBusinessEngine, UsersAddressBusinessEngine>();
-            services.AddScoped<ASMSDataAccessLayer.ContractsDAL.IUnitOfWork, ASMSDataAccessLayer.ImplementationsDAL.UnitOfWork>();
+            services.AddScoped<ICityBusinessEngine, CityBusinessEngine>();
+            services.AddScoped<ASMSDataAccessLayer.ContractsDAL.IUnitOfWork,
+                ASMSDataAccessLayer.ImplementationsDAL.UnitOfWork>();
 
         }
         
