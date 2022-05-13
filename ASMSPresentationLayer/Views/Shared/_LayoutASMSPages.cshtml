@@ -23,11 +23,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
-
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
     </script>
 
     <!-- //Meta tag Keywords -->
@@ -57,14 +55,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
     <!-- mian-content -->
     <header class="index-banner" id="home">
-        <partial name="Partials/_HeaderPartial" />
 
-        <!--Banner-->
+        <partial name="Partials/_HeaderPartial" />
+        <!-- banner -->
         <div class="banner_section_pages">
+
+
 
         </div>
 
-        <!--Banner-->
+        <!-- banner -->
+
+
     </header>
     <!-- //header -->
     <!--// banner-slider -->
@@ -76,17 +78,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </section>
     <!--// ab -->
-    <!--/footer-->
 
     <partial name="Partials/_FooterPartial" />
 
-    <!--//footer-->
     <!--model-forms-->
     <!--/Login-->
     @await Component.InvokeAsync("Login")
+
     <!--//Login-->
     <!--/Register-->
+    <!--Components klasörünün içindeki register i alıyor-->
     @await Component.InvokeAsync("Register")
+
     <!--//Register-->
 
     <script src="~/asmsTheme/js/jquery-2.2.3.min.js"></script>
@@ -97,26 +100,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             easing: 'ease-out-back',
             duration: 1000
         });
-
     </script>
     <!-- sticky nav bar-->
     <script>
         $(() => {
-
             //On Scroll Functionality
             $(window).scroll(() => {
                 var windowTop = $(window).scrollTop();
                 windowTop > 100 ? $('nav').addClass('navShadow') : $('nav').removeClass('navShadow');
                 windowTop > 100 ? $('ul.nav-honey').css('top', '50px') : $('ul.nav-honey').css('top', '160px');
             });
-
             //Click Logo To Scroll To Top
             $('#logo').on('click', () => {
                 $('html,body').animate({
                     scrollTop: 0
                 }, 500);
             });
-
             //            //Smooth Scrolling Using Navigation Menu
             //            $('a[href*="#"]').on('click', function(e) {
             //                $('html,body').animate({
@@ -124,20 +123,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             //                }, 500);
             //                e.preventDefault();
             //            });
-
             //Toggle Menu
             $('#menu-toggle').on('click', () => {
                 $('#menu-toggle').toggleClass('closeMenu');
                 $('ul').toggleClass('showMenu');
-
                 $('li').on('click', () => {
                     $('ul').removeClass('showMenu');
                     $('#menu-toggle').removeClass('closeMenu');
                 });
             });
-
         });
-
     </script>
     <!-- //sticky nav bar -->
     <!-- Include jQuery Timeline Plugin -->
@@ -145,7 +140,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <script>
         $(document).ready(function () {
-
             var events = [{
                 date: 'Oct 2018 - Present',
                 content: 'Company Name <small>Co-founder, Front-end Designer</small>'
@@ -174,12 +168,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 date: '2010 - 2011',
                 content: 'New York university  <small>For Graphic Design</small>'
             },
-
             {
                 date: '2009 - 2010',
                 content: 'New York university  <small>For Graphic Design</small>'
             },
-
             {
                 date: '2008 - 2009',
                 content: 'New York university  <small>For Graphic Design</small>'
@@ -197,7 +189,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 content: 'Lorem IPsum  <small>Add Description</small>'
             }
             ];
-
             $('#my-timeline').roadmap(events, {
                 eventsPerSlide: 6,
                 slide: 1,
@@ -205,13 +196,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 nextArrow: '<i class="fas fa-chevron-right"></i>'
             });
         });
-
     </script>
     <!-- simpleLightbox -->
     <script src="~/asmsTheme/js/simpleLightbox.js"></script>
     <script>
         $('.proj_gallery_grid a').simpleLightbox();
-
     </script>
     <!-- //simpleLightbox -->
     <!-- stats -->
@@ -219,7 +208,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="~/asmsTheme/js/jquery.countup.js"></script>
     <script>
         $('.counter').countUp();
-
     </script>
     <!-- //stats -->
     <!--/ start-smoth-scrolling -->
@@ -234,7 +222,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 }, 900);
             });
         });
-
     </script>
     <script>
         $(document).ready(function () {
@@ -246,22 +233,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         easingType: 'linear'
                                      };
                                     */
-
             $().UItoTop({
                 easingType: 'easeOutQuart'
             });
-
         });
-
     </script>
     <!--// end-smoth-scrolling -->
     <!-- //js -->
 
     <script src="~/asmsTheme/js/bootstrap.js"></script>
+    <!-- İstanbula tıkladıgımız anda istanbula ait ilçerin dropdownliste görmek için yapıyoruz.-->
     @RenderSection("Scripts", required: false)
-    <!--@await RenderSectionAsync("Scripts", required: false)  ASENKRON HALİ-->
-
+    <!-- Asenkron hali-->
+    @*@await RenderSectionAsync("Scripts", required: false)*@
 </body>
 
 </html>
-
