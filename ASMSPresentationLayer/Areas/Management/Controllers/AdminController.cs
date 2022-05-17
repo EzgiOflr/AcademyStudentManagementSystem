@@ -4,6 +4,7 @@ using ASMSEntityLayer.Enums;
 using ASMSEntityLayer.IdentityModels;
 using ASMSPresentationLayer.Areas.Management.Models;
 using ASMSPresentationLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -183,5 +184,16 @@ namespace ASMSPresentationLayer.Areas.Management.Controllers
             }
         }
 
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Admin", new { area = nameof(Areas.Management) });
+        }
+
     }
+
+    
 }

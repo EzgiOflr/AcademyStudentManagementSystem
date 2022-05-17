@@ -106,7 +106,7 @@ namespace ASMSPresentationLayer
                 endpoints.MapAreaControllerRoute(
                  "management",
                  "management",
-                 "management/{controller=Admin}/{action=Register}/{id?}"
+                 "management/{controller=Admin}/{action=Login}/{id?}"
                  );
 
 
