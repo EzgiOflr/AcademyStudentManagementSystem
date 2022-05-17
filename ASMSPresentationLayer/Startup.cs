@@ -102,6 +102,14 @@ namespace ASMSPresentationLayer
             CreateDefaultData.CreateData.Create(roleManager);
             app.UseEndpoints(endpoints =>
             {
+               
+                endpoints.MapAreaControllerRoute(
+                 "management",
+                 "management",
+                 "management/{controller=Admin}/{action=Register}/{id?}"
+                 );
+
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
